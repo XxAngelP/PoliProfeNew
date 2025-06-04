@@ -4,6 +4,7 @@ use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicPagesController;
 use App\Http\Controllers\QuejaController;
+use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\VerificacionController;
 use App\Http\Controllers\VerificacionController as ControllersVerificacionController;
 use Illuminate\Http\Request;
@@ -39,8 +40,13 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'role:moderador|administrador'])->group(function () {
     Route::get('/panel',function(){return view('moder.dashboard');});
 
+    //Verificaciones
     Route::get('/verificacion',[VerificacionController::class,'index']);
     Route::get('/verificacion/show',[VerificacionController::class,'show']);
+
+    //Reportes
+    Route::get('/reporte',[ReportesController::class,'index']);
+    Route::get('/reporte/show',[ReportesController::class,'show']);
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

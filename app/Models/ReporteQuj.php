@@ -11,4 +11,8 @@ class ReporteQuj extends Model
     use HasFactory;
 
     protected $table = 'reportes_qujs';
+
+    public function queja(){
+        return $this->belongsTo(Queja::class,'queja_id','id');
+    }
 }

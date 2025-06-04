@@ -24,7 +24,7 @@
                 <h3 class="font-bold text-lg">Reportes</h3>
                 <p>Ve, administra y elmina reportes</p>
                 <div class="text-center mt-6">
-                    <a href="/reporte/index" class="bg-pink-900 text-white py-2 px-6 rounded-lg hover:bg-pink-800">Ir a reportes</a>
+                    <a href="/reporte" class="bg-pink-900 text-white py-2 px-6 rounded-lg hover:bg-pink-800">Ir a reportes</a>
                 </div>
             </div>
             <div class="p-4 bg-gray-200 rounded-lg text-center">

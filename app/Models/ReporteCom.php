@@ -11,4 +11,8 @@ class ReporteCom extends Model
     use HasFactory;
 
     protected $table = 'reportes_com';
+
+    public function comentario(){
+        return $this->belongsTo(Comentario::class,'comentario_id','id');
+    }
 }
