@@ -19,7 +19,7 @@ class QuejaFactory extends Factory
         return [
             'c_queja_id' => fake()->numberBetween(1,12),
             'profesores_id' => fake()->numberBetween(1,200),
-            'users_id' => fake()->numberBetween(1,200),
+            'users_id' => fake()->numberBetween(3,200),
             'comentario' => fake()->text(256),
             'cm' => fake()->optional()->text(45),
         ];

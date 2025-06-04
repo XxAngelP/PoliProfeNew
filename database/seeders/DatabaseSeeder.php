@@ -10,9 +10,12 @@ use App\Models\Profesor;
 use App\Models\ProfesorMateria;
 use App\Models\Queja;
 use App\Models\ReporteCom;
+use App\Models\ReporteQuj;
+use App\Models\ReportesQuj;
 use App\Models\User;
 use App\Models\Users;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +28,28 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'usuario']);
         Role::create(['name' => 'moderador']);
         Role::create(['name' => 'administrador']);
+
+       $admin = User::create([
+            'name' => 'Admin',
+            'first_last_name' => 'Baez',
+            'second_last_name' => 'Simon',
+            'email' => 'admin@correo.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'is_auth' => 1
+        ]);
+        $admin->assignRole('administrador');
+
+        $moderador = User::create([
+            'name' => 'Moderador',
+            'first_last_name' => 'Baez',
+            'second_last_name' => 'Simon',
+            'email' => 'moderador@correo.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'is_auth' => 1
+        ]);
+        $moderador->assignRole('moderador');
 
         $materias = [
             ['nombre' => 'Matemáticas'],
@@ -103,5 +128,7 @@ class DatabaseSeeder extends Seeder
         Comentario::factory(800)->create();
 
         ReporteCom::factory(10)->create();
+
+        ReporteQuj::factory(10)->create();
     }
 }

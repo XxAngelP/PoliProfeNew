@@ -17,7 +17,7 @@ class ComentarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'users_id' => fake()->numberBetween(1,200),
+            'users_id' => fake()->numberBetween(3,200),
             'profesores_id' => fake()->numberBetween(1,200),
             'materia_id' => fake()->numberBetween(1,20),
             'r_dm' => fake()->numberBetween(1,5),

@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reportes_com', function (Blueprint $table) {
+        Schema::create('reportes_qujs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('comentario_id');
+            $table->unsignedBigInteger('queja_id');
             $table->text('txt_reporte',80)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('comentario_id')->references('id')->on('comentarios')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('queja_id')->references('id')->on('quejas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reportes_com');
+        Schema::dropIfExists('reportes_qujs');
     }
 };

@@ -6,8 +6,8 @@
         </div>
 
         <div class="flex items-center justify-center gap-10">
-            <a href="/comentario/create?profesor={{$profesor->id}}" class="px-8 py-4 text-white bg-pink-900 rounded shadow-md hover:bg-pink-800">Agregar Comentario</a>
-            <a href="/queja/create?profesor={{$profesor->id}}" class="px-8 py-4 text-white bg-pink-900 rounded shadow-md hover:bg-pink-800">Agregar Queja</a>
+            <a href="/comentario/create?id={{$profesor->id}}" class="px-8 py-4 text-white bg-pink-900 rounded shadow-md hover:bg-pink-800">Agregar Comentario</a>
+            <a href="/queja/create?id={{$profesor->id}}" class="px-8 py-4 text-white bg-pink-900 rounded shadow-md hover:bg-pink-800">Agregar Queja</a>
         </div>
     </div>
 
@@ -48,7 +48,7 @@
                                     <form action="/reportar" method="POST">
                                         <input type="hidden" name="comentario" value="{{$comentario->id}}">
                                         <input type="hidden" name="user" value="{{$comentario->user->id}}">
-                                        <label for="motivo" class="block mb-2 text-2xl text-center text-pink-900">Motivo de Reporte</label>
+                                        <label for="motivo" class="block mb-2 text-3xl font-semibold text-center text-pink-900 mt-3">Motivo de Reporte</label>
                                         <textarea name="motivo" id="" cols="30" rows="10"  class="w-full p-3 border-gray-100 shadow-md outline-none border-1" required></textarea>
                                         <div class="flex justify-center w-full">
                                             <button class="px-8 py-4 mx-auto text-white rounded shadow-md bg-amber-200 hover:bg-amber-300">Reportar</button>

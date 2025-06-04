@@ -19,6 +19,11 @@
             </div>
             
             <div class="flex items-center gap-10">
+
+                @hasrole('moderador|administrador')
+                    <a href="/panel">Dashboard</a>
+                @endhasrole
+
                 <details class="relative">
                 <summary class="flex items-center gap-2 list-none transition duration-300 cursor-pointer hover:text-pink-950"><x-eva-arrow-ios-downward-outline class="w-5"/>Academia</summary>
                 <div class="absolute bg-white">

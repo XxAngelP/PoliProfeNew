@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\ReporteCom;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reporte>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ReporteQuj>
  */
-class ReporteComFactory extends Factory
+class ReporteQujFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +18,7 @@ class ReporteComFactory extends Factory
     {
         return [
             'user_id' => fake()->numberBetween(3,200),
-            'comentario_id' => fake()->numberBetween(1,800), 
+            'queja_id' => fake()->numberBetween(1,200), 
             'txt_reporte' => fake()->text(80),
         ];
     }

@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicPagesController;
+use App\Http\Controllers\QuejaController;
+use App\Http\Controllers\VerificacionController;
+use App\Http\Controllers\VerificacionController as ControllersVerificacionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log as FacadesLog;
@@ -26,6 +30,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/comentario/create',[ComentarioController::class,'crear'] );
+    Route::get('/comentario/store',[ComentarioController::class,'store'] );
+    Route::get('/queja/create',[QuejaController::class,'crear'] );
+});
+
+Route::middleware(['auth', 'role:moderador|administrador'])->group(function () {
+    Route::get('/panel',function(){return view('moder.dashboard');});
+
+    Route::get('/verificacion',[VerificacionController::class,'index']);
+    Route::get('/verificacion/show',[VerificacionController::class,'show']);
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

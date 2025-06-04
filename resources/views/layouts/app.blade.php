@@ -30,5 +30,8 @@
                 </div>
             </div>
         </div>
+        <footer class="mt-10 text-center text-gray-600">
+        <p>© 2025 PoliProfe. Todos los derechos reservados.</p>
+    </footer>
     </body>
 </html>
