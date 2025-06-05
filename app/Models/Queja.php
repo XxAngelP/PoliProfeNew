@@ -17,6 +17,7 @@ class Queja extends Model
         'profesores_id',
         'c_queja_id',
         'comentario',
+        'estatus',
     ];
 
     public function categoria(){
@@ -25,5 +26,9 @@ class Queja extends Model
 
     public function user(){
         return $this->belongsTo(User::class,'users_id','id');
+    }
+
+    public function profesor(){
+        return $this->belongsTo(Profesor::class,'profesores_id','id');
     }
 }

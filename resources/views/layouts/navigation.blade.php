@@ -38,7 +38,7 @@
                 <div class="flex items-center gap-2">        
                     <x-zondicon-search class="w-4 h-4"/>
                     <form action="">
-                        <input class="p-1 outline-none !important" type="text" placeholder="Maestro" id="busqueda-maestro" autocomplete="off" >
+                        <input type="text" placeholder="Maestro" id="busqueda-maestro" autocomplete="off" >
                         <ul id="sugerencias-maestro" class="absolute"></ul>
                         <script src="{{ asset('js/jquery.min.js') }}"></script> 
                         <script>
@@ -81,7 +81,7 @@
                 <div class="flex items-center gap-2">
                     <x-zondicon-search class="w-4 h-4"/>
                     <form action="" class="relative">
-                        <input class="p-1 outline-none border-b-1 border-zinc-400" type="text" placeholder="Materia" id="busqueda-materia" autocomplete="off">
+                        <input type="text" placeholder="Materia" id="busqueda-materia" autocomplete="off">
                         <ul id="sugerencias-materia" class="absolute"></ul>
                         <script>
                             $(document).ready(function(){

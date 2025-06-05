@@ -10,35 +10,6 @@
             <a href="/queja/create?id={{$profesor->id}}" class="px-8 py-4 text-white bg-pink-900 rounded shadow-md hover:bg-pink-800">Agregar Queja</a>
         </div>
     </div>
-    
-    @if (session('mensaje'))
-        @php
-            $type = session('type');
-        @endphp
-
-        @if ($type == "error")
-            <div class="p-2 mt-3 text-lg text-center bg-red-600 rounded-lg shadow-md">
-                <h2 class="font-semibold text-white">{{session('mensaje')}}</h2>
-            </div>
-        
-        @elseif ($type == "success")
-            <div class="p-2 mt-3 text-lg text-center bg-green-600 rounded-lg shadow-md">
-                <h2 class="font-semibold text-white">{{session('mensaje')}}</h2>
-            </div>
-        
-        @endif
-    @endif
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
 
     <div class="grid grid-cols-[2fr_1fr] gap-4 w-full">
         <div> 
@@ -48,7 +19,7 @@
             </div>
 
             @foreach($comentarios as $comentario)
-                @if($comentario->status <= 2)
+                @if($comentario->estatus<2)
                     <div class="p-6 mt-6 bg-white rounded-lg shadow-md">
                         <div class="flex items-center justify-between">
                             <h1 class="mb-1 text-4xl font-bold text-pink-900">{{$comentario->materia->nombre}}</h1>
@@ -144,7 +115,7 @@
             @endforeach
         </div>
 
-        <div class="p-6 mt-6 bg-white rounded-lg shadow-md">
+        <div class="self-start h-auto p-6 mt-6 bg-white rounded-lg shadow-md">
             <h1 class="mb-1 text-3xl font-bold text-pink-900">Estadisticas</h1>
 
             <div class="mt-3">

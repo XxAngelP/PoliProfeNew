@@ -24,6 +24,7 @@ class Comentario extends Model
         'r_rte',
         'r_ra',
         'r_com',
+        'estatus',
     ];
 
     protected $table = 'comentarios';

@@ -21,6 +21,7 @@ class ReporteComFactory extends Factory
             'user_id' => fake()->numberBetween(3,200),
             'comentario_id' => fake()->numberBetween(1,800), 
             'txt_reporte' => fake()->text(80),
+            'estatus' => 0,
         ];
     }
 }

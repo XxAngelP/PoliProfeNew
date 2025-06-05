@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'PoliProfe') }}</title>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -22,6 +22,24 @@
                     </div>
                 </header>
             @endisset
+
+            @if (session('mensaje'))
+                @php
+                    $type = session('type');
+                @endphp
+
+                @if ($type == "error")
+                    <div class="w-3/4 p-2 mx-auto mt-3 text-lg text-center bg-red-600 rounded-lg shadow-md">
+                        <h2 class="font-semibold text-white">{{session('mensaje')}}</h2>
+                    </div>
+                
+                @elseif ($type == "success")
+                    <div class="w-3/4 p-2 mx-auto mt-3 text-lg text-center bg-green-600 rounded-lg shadow-md">
+                        <h2 class="font-semibold text-white">{{session('mensaje')}}</h2>
+                    </div>
+                
+                @endif
+            @endif
 
             <!-- Page Content -->
             <div class="flex justify-center mt-5">

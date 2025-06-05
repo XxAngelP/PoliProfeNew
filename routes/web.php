@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/reportar/store',[ReportesController::class,'store'] );
 });
 
+//Rutas para Moderadores
 Route::middleware(['auth', 'role:moderador|administrador'])->group(function () {
     Route::get('/panel',function(){return view('moder.dashboard');});
 
@@ -50,6 +51,12 @@ Route::middleware(['auth', 'role:moderador|administrador'])->group(function () {
     //Reportes
     Route::get('/reporte',[ReportesController::class,'index']);
     Route::get('/reporte/show',[ReportesController::class,'show']);
+
+    Route::put('/reporte/comentario/keep',[ReportesController::class,'comentario_keep']);
+    Route::put('/reporte/comentario/disable',[ReportesController::class,'comentario_disable']);
+
+    Route::put('/reporte/queja/keep',[ReportesController::class,'queja_keep']);
+    Route::put('/reporte/queja/disable',[ReportesController::class,'queja_disable']);
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -57,8 +64,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return "Vista de admin";
     });
 });
-
-//Rutas para Moderadores
 
 //Rutas para Administradores
 require __DIR__.'/apis.php';
