@@ -12,5 +12,11 @@ class ReportesController extends Controller
         $reportes_com = ReporteCom::with('comentario')->get();
         $reportes_quj = ReporteQuj::with('queja')->get();
         return view('moder.reportes.index',compact('reportes_com','reportes_quj'));
+        // return $reportes_com;
     }
+
+    public function disable(){}
+
+    public function keep(){}
+
 }
