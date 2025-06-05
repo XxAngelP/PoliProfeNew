@@ -54,7 +54,7 @@
                                                 let lista = $('#sugerencias-maestro');
                                                 lista.empty();
                                                 data.forEach(maestro => {
-                                                    lista.append(`<li class="p-2 bg-white min-w-32 hover:text-pink-900"><a href='/profesor/${maestro.id}'>${maestro.nombre_completo}</a></li>`);
+                                                    lista.append(`<li class="p-2 bg-white min-w-32 hover:text-pink-900"><a href='/profesor?id=${maestro.id}'>${maestro.nombre_completo}</a></li>`);
                                                 });
                                             }
                                         });

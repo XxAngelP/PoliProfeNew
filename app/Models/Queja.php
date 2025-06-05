@@ -12,6 +12,13 @@ class Queja extends Model
 
     protected $table = 'quejas';
 
+    protected $fillable = [
+        'users_id',
+        'profesores_id',
+        'c_queja_id',
+        'comentario',
+    ];
+
     public function categoria(){
         return $this->belongsTo(CQueja::class, 'c_queja_id', 'id');
     }

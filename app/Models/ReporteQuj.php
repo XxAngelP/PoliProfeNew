@@ -12,6 +12,12 @@ class ReporteQuj extends Model
 
     protected $table = 'reportes_qujs';
 
+    protected $fillable = [
+        'user_id',
+        'queja_id',
+        'txt_reporte',
+    ];
+
     public function queja(){
         return $this->belongsTo(Queja::class,'queja_id','id');
     }

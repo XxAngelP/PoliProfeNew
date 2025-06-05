@@ -31,7 +31,6 @@ class ComentarioFactory extends Factory
             'r_ra' => fake()->numberBetween(1,5),
             'r_com' => fake()->text(256),
             'estatus' => fake()->numberBetween(0,2,3),
-            'cm' => fake()->optional()->text(80),
         ];
     }
 }

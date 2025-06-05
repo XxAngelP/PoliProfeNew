@@ -1,51 +1,55 @@
 <x-app-layout>
-    <div class="bg-white rounded-lg shadow-md p-6 mb-5">
-        <h2 class="text-3xl font-bold mb-2 text-pink-900">Reportes de Comentarios</h2>
+    <div class="p-6 mb-5 bg-white rounded-lg shadow-md">
+        <h2 class="mb-2 text-3xl font-bold text-pink-900">Reportes de Comentarios</h2>
     </div>
 
     @foreach ($reportes_com as $reporte)
-        <div class="bg-white rounded w-full mb-3 p-5 shadow-md">
-            <h1 class="text-pink-900 text-xl">Comentario:</h1>
-            <div class="shadow-md rounded p-5 bg-yellow-50">
-                <h1 class="text-pink-900 text-lg">{{$reporte->comentario->materia->nombre}}</h1>
+        <div class="w-full p-5 mb-3 bg-white rounded shadow-md">
+            <h1 class="text-xl text-pink-900">Comentario:</h1>
+            <div class="p-5 rounded shadow-md">
+                <h1 class="text-lg text-pink-900">{{$reporte->comentario->materia->nombre}}</h1>
                 <p class="text-md">{{$reporte->comentario->r_com}}</p>
             </div>
-            <div class="flex justify-between items-end">
+            <div class="flex items-end justify-between">
                 {{-- Reporte --}}
                 <div>
-                    <h1 class="mt-2 text-pink-900 text-xl">Reporte:</h1>
-                    <p class="text-md">{{$reporte->txt_reporte}}</p>
+                    <h1 class="mt-2 text-xl text-pink-900">Reporte:</h1>
+                    <div class="p-5 rounded shadow-md bg-yellow-50">
+                        <p class="text-md">{{$reporte->txt_reporte}}</p>
+                    </div>
                 </div>
                 {{-- Opciones --}}
                 <div class="flex gap-6">
-                    <a class="p-3 bg-blue-600 text-white rounded" href="">Mantener Comentario</a>
-                    <a class="p-3 bg-red-600 text-white rounded" href="">Desactivar Comentario</a>
+                    <a class="p-3 text-white bg-blue-600 rounded" href="">Mantener Comentario</a>
+                    <a class="p-3 text-white bg-red-600 rounded" href="">Desactivar Comentario</a>
                 </div>
             </div>
         </div>
     @endforeach
 
-    <div class="bg-white rounded-lg shadow-md p-6 mb-5">
-        <h2 class="text-3xl font-bold mb-2 text-pink-900">Reportes de Quejas</h2>
+    <div class="p-6 mb-5 bg-white rounded-lg shadow-md">
+        <h2 class="mb-2 text-3xl font-bold text-pink-900">Reportes de Quejas</h2>
     </div>
 
     @foreach ($reportes_quj as $reporte)
-        <div class="bg-white rounded w-full mb-3 p-5 shadow-md">
-            <h1 class="text-pink-900 text-xl">Comentario:</h1>
-            <div class="shadow-md rounded p-5 bg-yellow-50">
-                <h1 class="text-pink-900 text-lg">{{$reporte->queja->categoria->nombre}}</h1>
+        <div class="w-full p-5 mb-3 bg-white rounded shadow-md">
+            <h1 class="text-xl text-pink-900">Comentario:</h1>
+            <div class="p-5 rounded shadow-md">
+                <h1 class="text-lg text-pink-900">{{$reporte->queja->categoria->nombre}}</h1>
                 <p class="text-md">{{$reporte->queja->comentario}}</p>
             </div>
-            <div class="flex justify-between items-end">
+            <div class="flex items-end justify-between">
                 {{-- Reporte --}}
                 <div>
-                    <h1 class="mt-2 text-pink-900 text-xl">Reporte:</h1>
-                    <p class="text-md">{{$reporte->txt_reporte}}</p>
+                    <h1 class="mt-2 text-xl text-pink-900">Reporte:</h1>
+                    <div class="p-5 rounded shadow-md bg-yellow-50">
+                        <p class="text-md">{{$reporte->txt_reporte}}</p>
+                    </div>
                 </div>
                 {{-- Opciones --}}
                 <div class="flex gap-6">
-                    <a class="p-3 bg-blue-600 text-white rounded" href="">Mantener Comentario</a>
-                    <a class="p-3 bg-red-600 text-white rounded" href="">Desactivar Comentario</a>
+                    <a class="p-3 text-white bg-blue-600 rounded" href="">Mantener Comentario</a>
+                    <a class="p-3 text-white bg-red-600 rounded" href="">Desactivar Comentario</a>
                 </div>
             </div>
         </div>

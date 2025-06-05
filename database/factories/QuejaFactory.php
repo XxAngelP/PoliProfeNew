@@ -21,7 +21,6 @@ class QuejaFactory extends Factory
             'profesores_id' => fake()->numberBetween(1,200),
             'users_id' => fake()->numberBetween(3,200),
             'comentario' => fake()->text(256),
-            'cm' => fake()->optional()->text(45),
         ];
     }
 }

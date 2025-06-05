@@ -12,6 +12,12 @@ class ReporteCom extends Model
 
     protected $table = 'reportes_com';
 
+    protected $fillable = [
+        'user_id',
+        'comentario_id',
+        'txt_reporte',
+    ];
+
     public function comentario(){
         return $this->belongsTo(Comentario::class,'comentario_id','id');
     }

@@ -33,8 +33,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/comentario/create',[ComentarioController::class,'crear'] );
-    Route::get('/comentario/store',[ComentarioController::class,'store'] );
+    Route::post('/comentario/create',[ComentarioController::class,'store'] );
     Route::get('/queja/create',[QuejaController::class,'crear'] );
+    Route::post('/queja/create',[QuejaController::class,'store'] );
+
+    Route::post('/reportar/store',[ReportesController::class,'store'] );
 });
 
 Route::middleware(['auth', 'role:moderador|administrador'])->group(function () {

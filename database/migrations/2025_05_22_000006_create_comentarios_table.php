@@ -27,7 +27,6 @@ return new class extends Migration
             $table->tinyInteger('r_ra');
             $table->text('r_com');
             $table->tinyInteger('estatus')->default(0);
-            $table->text('cm',80)->nullable();
             $table->timestamps();
 
             $table->index('profesores_id');

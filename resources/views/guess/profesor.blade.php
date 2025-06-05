@@ -10,9 +10,38 @@
             <a href="/queja/create?id={{$profesor->id}}" class="px-8 py-4 text-white bg-pink-900 rounded shadow-md hover:bg-pink-800">Agregar Queja</a>
         </div>
     </div>
+    
+    @if (session('mensaje'))
+        @php
+            $type = session('type');
+        @endphp
+
+        @if ($type == "error")
+            <div class="p-2 mt-3 text-lg text-center bg-red-600 rounded-lg shadow-md">
+                <h2 class="font-semibold text-white">{{session('mensaje')}}</h2>
+            </div>
+        
+        @elseif ($type == "success")
+            <div class="p-2 mt-3 text-lg text-center bg-green-600 rounded-lg shadow-md">
+                <h2 class="font-semibold text-white">{{session('mensaje')}}</h2>
+            </div>
+        
+        @endif
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 
     <div class="grid grid-cols-[2fr_1fr] gap-4 w-full">
-        <div>
+        <div> 
 
             <div class="p-2 mt-6 bg-white rounded-lg shadow-md ">
                 <h2 class="mb-1 text-3xl font-bold text-center text-pink-900">Comentarios</h2>
@@ -45,11 +74,13 @@
                                         </div>
                                     </div>
                                 <div>
-                                    <form action="/reportar" method="POST">
-                                        <input type="hidden" name="comentario" value="{{$comentario->id}}">
-                                        <input type="hidden" name="user" value="{{$comentario->user->id}}">
-                                        <label for="motivo" class="block mb-2 text-3xl font-semibold text-center text-pink-900 mt-3">Motivo de Reporte</label>
-                                        <textarea name="motivo" id="" cols="30" rows="10"  class="w-full p-3 border-gray-100 shadow-md outline-none border-1" required></textarea>
+                                    <form action="/reportar/store" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="profesor_id" value="{{$profesor->id}}">
+                                        <input type="hidden" name="type" value="comentario">
+                                        <input type="hidden" name="comentario_id" value="{{$comentario->id}}">
+                                        <label for="txt_reporte" class="block mt-3 mb-2 text-3xl font-semibold text-center text-pink-900">Motivo de Reporte</label>
+                                        <textarea name="txt_reporte" id="txt_reporte" cols="30" rows="10"  class="w-full p-3 border-gray-100 shadow-md outline-none border-1" required></textarea>
                                         <div class="flex justify-center w-full">
                                             <button class="px-8 py-4 mx-auto text-white rounded shadow-md bg-amber-200 hover:bg-amber-300">Reportar</button>
                                             <button type="button" popovertarget = "reportar-comentario-{{$comentario->id}}" class="px-8 py-4 mx-auto text-white bg-red-300 rounded shadow-md hover:bg-red-400">Cancelar</button>    
@@ -93,11 +124,13 @@
                                         </div>
                                     </div>
                                 <div>
-                                    <form action="/reportar" method="POST">
-                                        <input type="hidden" name="comentario" value="{{$queja->id}}">
-                                        <input type="hidden" name="user" value="{{$queja->user->id}}">
-                                        <label for="motivo" class="block mb-2 text-2xl text-center text-pink-900">Motivo de Reporte</label>
-                                        <textarea name="motivo" id="" cols="30" rows="10"  class="w-full p-3 border-gray-100 shadow-md outline-none border-1" required></textarea>
+                                    <form action="/reportar/store" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="profesor_id" value="{{$profesor->id}}">
+                                        <input type="hidden" name="type" value="queja">
+                                        <input type="hidden" name="queja_id" value="{{$queja->id}}">
+                                        <label for="txt_reporte" class="block mb-2 text-2xl text-center text-pink-900">Motivo de Reporte</label>
+                                        <textarea name="txt_reporte" id="txt_reporte" cols="30" rows="10"  class="w-full p-3 border-gray-100 shadow-lg outline-none border-1" required></textarea>
                                         <div class="flex justify-center w-full">
                                             <button class="px-8 py-4 mx-auto text-white rounded shadow-md bg-amber-200 hover:bg-amber-300">Reportar</button>
                                             <button type="button" popovertarget = "reportar-queja-{{$queja->id}}" class="px-8 py-4 mx-auto text-white bg-red-300 rounded shadow-md hover:bg-red-400">Cancelar</button>    
