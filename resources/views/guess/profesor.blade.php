@@ -53,7 +53,7 @@
                                         <label for="txt_reporte" class="block mt-3 mb-2 text-3xl font-semibold text-center text-pink-900">Motivo de Reporte</label>
                                         <textarea name="txt_reporte" id="txt_reporte" cols="30" rows="10"  class="w-full p-3 border-gray-100 shadow-md outline-none border-1" required></textarea>
                                         <div class="flex justify-center w-full">
-                                            <button class="px-8 py-4 mx-auto text-white rounded shadow-md bg-amber-200 hover:bg-amber-300">Reportar</button>
+                                            <button class="px-8 py-4 mx-auto text-white bg-blue-300 rounded shadow-md hover:bg-blue-400">Reportar</button>
                                             <button type="button" popovertarget = "reportar-comentario-{{$comentario->id}}" class="px-8 py-4 mx-auto text-white bg-red-300 rounded shadow-md hover:bg-red-400">Cancelar</button>    
                                         </div>
                                     </form>
@@ -103,7 +103,7 @@
                                         <label for="txt_reporte" class="block mb-2 text-2xl text-center text-pink-900">Motivo de Reporte</label>
                                         <textarea name="txt_reporte" id="txt_reporte" cols="30" rows="10"  class="w-full p-3 border-gray-100 shadow-lg outline-none border-1" required></textarea>
                                         <div class="flex justify-center w-full">
-                                            <button class="px-8 py-4 mx-auto text-white rounded shadow-md bg-amber-200 hover:bg-amber-300">Reportar</button>
+                                            <button class="px-8 py-4 mx-auto text-white bg-blue-300 rounded shadow-md hover:bg-blue-400">Reportar</button>
                                             <button type="button" popovertarget = "reportar-queja-{{$queja->id}}" class="px-8 py-4 mx-auto text-white bg-red-300 rounded shadow-md hover:bg-red-400">Cancelar</button>    
                                         </div>
                                     </form>

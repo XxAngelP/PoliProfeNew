@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -51,6 +51,12 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <h2 class="mt-2">Puedes subir una foto de tu credencial u horario para verificarte(Opcional)</h2>
+        <div class="relative flex items-center justify-center w-full mt-4">
+            <input type="file" name="image" id="file-upload" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+            <label for="file-upload" class="px-6 py-3 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">📁 Seleccionar Archivo</label>
         </div>
 
         <div class="flex items-center justify-end mt-4">

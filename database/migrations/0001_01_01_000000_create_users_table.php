@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->string('img_url', 41)->unique()->nullable();
+            $table->string('img_url', 45)->unique()->nullable();
             $table->tinyInteger('is_auth')->default(false);
             $table->timestamps();
         });

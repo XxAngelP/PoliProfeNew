@@ -37,8 +37,8 @@
 
                 <div class="flex items-center gap-2">        
                     <x-zondicon-search class="w-4 h-4"/>
-                    <form action="">
-                        <input type="text" placeholder="Maestro" id="busqueda-maestro" autocomplete="off" >
+                    <form action="/Maestros" method="GET">
+                        <input type="text" placeholder="Maestro" id="busqueda-maestro" autocomplete="off" name="profesor" >
                         <ul id="sugerencias-maestro" class="absolute"></ul>
                         <script src="{{ asset('js/jquery.min.js') }}"></script> 
                         <script>

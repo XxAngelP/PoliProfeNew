@@ -16,7 +16,8 @@ class PublicPagesController extends Controller
         $id = $request->query('id');
         $profesores = Profesor::where('academias_id', $id)->with('academia')->get();
         $academia = Academia::find($id);
-        return view('guess.academia', compact('profesores','academia'));
+        $mensaje = 'Profesores de la Academia de '.$academia->nombre;
+        return view('guess.profesor-lista', compact('profesores','academia','mensaje'));
     }
 
     public function profesor(Request $request){
@@ -57,16 +58,24 @@ class PublicPagesController extends Controller
             $r_ra += $comentario->r_ra;                  
         }
 
-        $r_dm =  round($r_dm/count($comentarios));
-        $r_ce =  round($r_ce/count($comentarios));  
-        $r_mia = round($r_mia/count($comentarios)); 
-        $r_oc =  round($r_oc/count($comentarios));  
-        $r_ru =  round($r_ru/count($comentarios));  
-        $r_drd = round($r_drd/count($comentarios)); 
-        $r_ejr = round($r_ejr/count($comentarios));
-        $r_rte = round($r_rte/count($comentarios)); 
-        $r_ra =  round($r_ra/count($comentarios)); 
+        if($r_dm != 0 && $r_ce != 0 && $r_mia != 0 && $r_oc != 0 && $r_ru != 0 && $r_drd != 0 && $r_ejr != 0 && $r_rte != 0 && $r_ra != 0){
+            $r_dm =  round($r_dm/count($comentarios));
+            $r_ce =  round($r_ce/count($comentarios));  
+            $r_mia = round($r_mia/count($comentarios)); 
+            $r_oc =  round($r_oc/count($comentarios));  
+            $r_ru =  round($r_ru/count($comentarios));  
+            $r_drd = round($r_drd/count($comentarios)); 
+            $r_ejr = round($r_ejr/count($comentarios));
+            $r_rte = round($r_rte/count($comentarios)); 
+            $r_ra =  round($r_ra/count($comentarios)); 
+        }
 
         return view('guess.profesor', compact('profesor','comentarios','quejas','r_dm','r_ce','r_mia','r_oc','r_ru','r_drd','r_ejr','r_rte','r_ra','edad'));
+    }
+
+    public function profesores(Request $request){
+        $profesores = Profesor::where('nombre_completo', 'like', '%'.$request->query('nombre').'%')->with('academia')->get();
+        $mensaje = 'Resultados de tu busqueda';
+        return view('guess.profesor-lista', compact('profesores','mensaje'));
     }
 }

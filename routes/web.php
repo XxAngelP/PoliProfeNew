@@ -25,15 +25,19 @@ Route::get('/dashboard', function (Request $request) {
 //Rutas publicas
 Route::get('/academia', [PublicPagesController::class,'academia']);
 Route::get('/profesor', [PublicPagesController::class,'profesor']);
+Route::get('/profesores', [PublicPagesController::class,'profesores']);
+Route::get('/materia', [PublicPagesController::class,'materia']);
 
 //Rutas para Usuarios
 Route::middleware(['auth'])->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/comentario/create',[ComentarioController::class,'crear'] );
     Route::post('/comentario/create',[ComentarioController::class,'store'] );
+    
     Route::get('/queja/create',[QuejaController::class,'crear'] );
     Route::post('/queja/create',[QuejaController::class,'store'] );
 
@@ -47,6 +51,9 @@ Route::middleware(['auth', 'role:moderador|administrador'])->group(function () {
     //Verificaciones
     Route::get('/verificacion',[VerificacionController::class,'index']);
     Route::get('/verificacion/show',[VerificacionController::class,'show']);
+
+    Route::put('/verificacion/verificar',[VerificacionController::class,'verificar']);
+    Route::put('/verificacion/rechazar',[VerificacionController::class,'rechazar']);
 
     //Reportes
     Route::get('/reporte',[ReportesController::class,'index']);

@@ -28,12 +28,10 @@ class UserFactory extends Factory
             'first_last_name' => fake()->lastName(),
             'second_last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
-            'boleta' => fake()->boolean(80) ? fake()->unique()->numberBetween(2020000000, 2026000000) : null,
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'is_auth' => fake()->numberBetween(0,1),
-            'img_url' => fake()->optional()->text(41),
         ];
     }
 

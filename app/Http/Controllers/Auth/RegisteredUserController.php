@@ -9,7 +9,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -35,6 +38,7 @@ class RegisteredUserController extends Controller
             'second_last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'image' => 'image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $user = User::create([
@@ -44,6 +48,20 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+
+            $fileName = Str::random(40).'.webp';
+            
+            $image = Image::read($file);
+            $imageWebp = $image->toWebp();
+
+            $path = storage_path("app/public/images/".$fileName);
+            $imageWebp->save($path);
+            $user->img_url = $fileName;
+            $user->save();
+        }
 
         event(new Registered($user));
 
