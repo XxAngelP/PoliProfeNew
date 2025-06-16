@@ -43,13 +43,13 @@
 
             <!-- Page Content -->
             <div class="flex justify-center mt-5">
-                <div class="w-3/4 mx-auto">
+                <div class="w-3/4 mx-auto mb-5">
                         {{ $slot }}
                 </div>
             </div>
         </div>
-        <footer class="mt-10 text-center text-gray-600">
+        <footer class="p-2 my-5 text-center text-gray-600">
         <p>© 2025 PoliProfe. Todos los derechos reservados.</p>
-    </footer>
+        </footer>
     </body>
 </html>

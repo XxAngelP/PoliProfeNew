@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="p-6 bg-white rounded-lg shadow-md">
-        <h1 class="mb-1 text-4xl font-bold text-pink-900">Bienvenido, Moderador!</h1>
+        <h1 class="mb-1 text-4xl font-bold text-pink-900">Bienvenido, {{ Auth::user()->name }}</h1>
         <h3 class="text-lg">Consulta y califica a los profesores de UPIICSA</h3>
     </div>
     

@@ -96,7 +96,7 @@
                                                 let lista = $('#sugerencias-materia');
                                                 lista.empty();
                                                 data.forEach(materia => {
-                                                    lista.append(`<li class="p-2 bg-white min-w-32 hover:text-pink-900"><a href='/materia/${materia.id}'>${materia.nombre}</a></li>`);
+                                                    lista.append(`<li class="p-2 bg-white min-w-32 hover:text-pink-900"><a href='/materia?materia=${materia.id}'>${materia.nombre}</a></li>`);
                                                 });
                                             }
                                         });

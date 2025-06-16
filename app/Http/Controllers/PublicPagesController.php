@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Academia;
 use App\Models\Comentario;
+use App\Models\Materia;
 use App\Models\Profesor;
 use App\Models\Queja;
 use DateTime;
@@ -77,5 +78,14 @@ class PublicPagesController extends Controller
         $profesores = Profesor::where('nombre_completo', 'like', '%'.$request->query('nombre').'%')->with('academia')->get();
         $mensaje = 'Resultados de tu busqueda';
         return view('guess.profesor-lista', compact('profesores','mensaje'));
+    }
+
+    public function materia(Request $request){
+        $id = $request->query('materia');
+        $materia = Materia::find($id);
+        $profesores = $materia->profesores;
+        $mensaje = 'Profesores de la Materia de ' .$materia->nombre;
+        return view('guess.profesor-lista', compact('profesores','mensaje'));
+
     }
 }
